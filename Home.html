@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AR Home Salon | Luxury at Home</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fff9f2 0%, #fff0e4 100%);
+      color: #2c241f;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* header with AR branding exactly like image style */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #b84c1e, #e17a44);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      text-shadow: 2px 2px 12px rgba(193, 85, 35, 0.1);
+    }
+
+    .hero h1 span {
+      background: none;
+      color: #e17a44;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+    }
+
+    .hero .sub {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #b15d36;
+      background: rgba(255, 245, 235, 0.8);
+      display: inline-block;
+      padding: 0.3rem 1.8rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      margin-top: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* category card style - same elegant theme */
+    .service-category {
+      background: #ffffff;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0,0,0,0.02);
+      transition: all 0.2s;
+      border: 1px solid #ffebdb;
+      overflow: hidden;
+    }
+
+    .category-head {
+      padding: 1.2rem 2rem;
+      border-bottom: 2px solid #ffe2ce;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: #fefaf5;
+    }
+
+    .category-head h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      background: linear-gradient(120deg, #b94f24, #dd7642);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .category-badge {
+      background: #ffede2;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #bb623b;
+      margin-left: auto;
+    }
+
+    /* price grid layout */
+    .price-grid {
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .price-tag {
+      background: #fffbf7;
+      border-radius: 2rem;
+      padding: 0.6rem 1.4rem;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 1rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 0 0 1px #ffebdf;
+      transition: all 0.2s ease;
+    }
+
+    .price-tag:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px #ffd7bb;
+      background: white;
+    }
+
+    .service-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #3f2c21;
+    }
+
+    .price-number {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #cc693c;
+      background: #fff0e5;
+      padding: 0.2rem 0.75rem;
+      border-radius: 40px;
+      line-height: 1.2;
+    }
+
+    /* two column for waxing normal + rica side by side */
+    .double-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .wax-box {
+      flex: 1;
+      background: #fffbf7;
+      border-radius: 1.5rem;
+      padding: 0.8rem 1rem 1rem 1rem;
+      border: 1px solid #ffefe2;
+    }
+
+    .wax-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 5px solid #e48754;
+      color: #9b4a26;
+    }
+
+    .inline-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .inline-chip {
+      background: white;
+      border-radius: 2rem;
+      padding: 0.4rem 1.2rem;
+      display: inline-flex;
+      gap: 0.7rem;
+      align-items: baseline;
+      border: 1px solid #ffe2cd;
+      font-weight: 500;
+    }
+
+    .inline-chip .chip-name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .inline-chip .chip-price {
+      font-weight: 800;
+      color: #c55d30;
+    }
+
+    /* threading & detan row */
+    .row-dual {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .dual-card {
+      flex: 1;
+      background: #fffaf4;
+      border-radius: 1.5rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid #ffe7d8;
+    }
+
+    .dual-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #c46134;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .compact-prices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .compact-item {
+      background: white;
+      border-radius: 50px;
+      padding: 0.3rem 1rem;
+      display: inline-flex;
+      gap: 0.6rem;
+      font-weight: 500;
+      border: 1px solid #ffdfca;
+    }
+
+    .compact-item .label {
+      font-weight: 600;
+      color: #4e3628;
+    }
+
+    .compact-item .cost {
+      font-weight: 800;
+      color: #c45b2c;
+    }
+
+    /* facial grid */
+    .facial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    /* special body polishing block */
+    .polish-highlight {
+      background: linear-gradient(115deg, #fff6ed, #ffffff);
+      border-radius: 1.5rem;
+      padding: 0.9rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border: 1px solid #ffdbbc;
+      width: 100%;
+    }
+
+    .polish-name {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #aa542c;
+    }
+
+    .polish-price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #bc4f1c;
+    }
+
+    /* footer */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.5rem;
+      color: #ab7b5d;
+      font-size: 0.85rem;
+      border-top: 1px solid #ffe0cd;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1rem;
+      }
+      .category-head h2 {
+        font-size: 1.5rem;
+      }
+      .price-tag {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .polish-price {
+        font-size: 1.4rem;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>AR <span>Home Salon</span></h1>
+    <div class="sub"><i class="fas fa-spa"></i> Premium at-home luxury <i class="fas fa-hand-sparkles"></i></div>
+  </div>
+
+  <div class="service-category">
+    <div class="category-head">
+      <h2>✨ Waxing</h2>
+      <div class="category-badge"><i class="fas fa-fire"></i> smooth & gentle</div>
+    </div>
+    <div class="price-grid">
+      <div class="double-section">
+        <!-- Normal Wax -->
+        <div class="wax-box">
+          <div class="wax-title"><i class="fas fa-feather-alt"></i> Waxing Normal</div>
+          <div class="inline-list">
+            <div class="inline-chip"><span class="chip-name">Underarms</span><span class="chip-price">₹49</span></div>
+            <div class="inline-chip"><span class="chip-name">Full Hand</span><span class="chip-price">₹149</span></div>
+            <div class="inline-chip"><span class="chip-name">Bikini Wax</span><span class="chip-price">₹249</span></div>
+            <div class="inline-chip"><span class="chip-name">Full Leg</span><span class="chip-price">₹299</span></div>
+            <div class="inline-chip"><span class="chip-name">Full body</span><span class="chip-price">₹899</span></div>
+          </div>
+        </div>
+        <!-- Rica Wax -->
+        <div class="wax-box">
+          <div class="wax-title"><i class="fas fa-leaf"></i> Rica Wax</div>
+          <div class="inline-list">
+            <div class="inline-chip"><span class="chip-name">Underarms</span><span class="chip-price">₹99</span></div>
+            <div class="inline-chip"><span class="chip-name">Full Hand</span><span class="chip-price">₹349</span></div>
+            <div class="inline-chip"><span class="chip-name">Bikini Wax</span><span class="chip-price">₹449</span></div>
+            <div class="inline-chip"><span class="chip-name">Full Leg</span><span class="chip-price">₹499</span></div>
+            <div class="inline-chip"><span class="chip-name">Full body</span><span class="chip-price">₹1499</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manicure & Pedicure -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>💅 Manicure & Pedicure</h2>
+      <div class="category-badge"><i class="fas fa-hand-peace"></i> perfect finish</div>
+    </div>
+    <div class="price-grid">
+      <div class="inline-list" style="width:100%">
+        <div class="inline-chip"><span class="chip-name">Basic Manicure/Pedicure</span><span class="chip-price">₹349</span></div>
+        <div class="inline-chip"><span class="chip-name">Deluxe</span><span class="chip-price">₹499</span></div>
+        <div class="inline-chip"><span class="chip-name">Aroma</span><span class="chip-price">₹599</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fruits Bleach -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>🍑 Fruits Bleach</h2>
+      <div class="category-badge"><i class="fas fa-sun"></i> instant glow</div>
+    </div>
+    <div class="price-grid">
+      <div class="inline-list">
+        <div class="inline-chip"><span class="chip-name">Face & Neck Bleach</span><span class="chip-price">₹199</span></div>
+        <div class="inline-chip"><span class="chip-name">Oxy Bleach Face & Neck</span><span class="chip-price">₹249</span></div>
+        <div class="inline-chip"><span class="chip-name">Full Body Bleach</span><span class="chip-price">₹499</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREADING + DETAN (from page 2 of PDF, same theme) -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>✧ Threading & Detan ✧</h2>
+      <div class="category-badge"><i class="fas fa-mask"></i> precision care</div>
+    </div>
+    <div class="price-grid">
+      <div class="row-dual">
+        <div class="dual-card">
+          <h3><i class="fas fa-thread"></i> THREADING</h3>
+          <div class="compact-prices">
+            <div class="compact-item"><span class="label">Chin</span><span class="cost">₹19</span></div>
+            <div class="compact-item"><span class="label">Forehead</span><span class="cost">₹19</span></div>
+            <div class="compact-item"><span class="label">Upperlips</span><span class="cost">₹19</span></div>
+            <div class="compact-item"><span class="label">Neck</span><span class="cost">₹19</span></div>
+            <div class="compact-item"><span class="label">Eyebrow</span><span class="cost">₹29</span></div>
+          </div>
+        </div>
+        <div class="dual-card">
+          <h3><i class="fas fa-water"></i> DETAN</h3>
+          <div class="compact-prices">
+            <div class="compact-item"><span class="label">UnderArms</span><span class="cost">₹79</span></div>
+            <div class="compact-item"><span class="label">Face & Neck Detan</span><span class="cost">₹149</span></div>
+            <div class="compact-item"><span class="label">Hand's Detan</span><span class="cost">₹249</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEANUP (Fruits, Pearl, Gold, Diamond, Charcoal) -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>🧼 CLEANUP</h2>
+      <div class="category-badge"><i class="fas fa-droplet"></i> deep radiance</div>
+    </div>
+    <div class="price-grid">
+      <div class="inline-list">
+        <div class="inline-chip"><span class="chip-name">Fruits Cleanup</span><span class="chip-price">₹149</span></div>
+        <div class="inline-chip"><span class="chip-name">Pearl Cleanup</span><span class="chip-price">₹149</span></div>
+        <div class="inline-chip"><span class="chip-name">Gold Cleanup</span><span class="chip-price">₹199</span></div>
+        <div class="inline-chip"><span class="chip-name">Diamond Cleanup</span><span class="chip-price">₹249</span></div>
+        <div class="inline-chip"><span class="chip-name">Charcoal Cleanup</span><span class="chip-price">₹249</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACIAL (Fruits, Gold, Pearl, Diamond, Vitamin C, Wine, Lotus) -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>💆 FACIAL</h2>
+      <div class="category-badge"><i class="fas fa-gem"></i> luxury glow</div>
+    </div>
+    <div class="price-grid">
+      <div class="facial-grid">
+        <div class="inline-chip"><span class="chip-name">Fruits Facial</span><span class="chip-price">₹449</span></div>
+        <div class="inline-chip"><span class="chip-name">Gold Facial</span><span class="chip-price">₹499</span></div>
+        <div class="inline-chip"><span class="chip-name">Pearl Facial</span><span class="chip-price">₹499</span></div>
+        <div class="inline-chip"><span class="chip-name">Diamond Facial</span><span class="chip-price">₹499</span></div>
+        <div class="inline-chip"><span class="chip-name">Vitamin C Facial</span><span class="chip-price">₹599</span></div>
+        <div class="inline-chip"><span class="chip-name">Wine Facial</span><span class="chip-price">₹699</span></div>
+        <div class="inline-chip"><span class="chip-name">Lotus Whitening</span><span class="chip-price">₹699</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HAIRCUTS -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>✂️ HAIRCUTS</h2>
+      <div class="category-badge"><i class="fas fa-cut"></i> style express</div>
+    </div>
+    <div class="price-grid">
+      <div class="inline-list">
+        <div class="inline-chip"><span class="chip-name">Straight Cut</span><span class="chip-price">₹99</span></div>
+        <div class="inline-chip"><span class="chip-name">U Shape</span><span class="chip-price">₹149</span></div>
+        <div class="inline-chip"><span class="chip-name">V Shape</span><span class="chip-price">₹179</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY POLISHING (Full Body Polishing) -->
+  <div class="service-category">
+    <div class="category-head">
+      <h2>🧴 BODY POLISHING</h2>
+      <div class="category-badge"><i class="fas fa-spa"></i> ultimate glow</div>
+    </div>
+    <div class="price-grid">
+      <div class="polish-highlight">
+        <span class="polish-name"><i class="fas fa-star-of-life"></i> Full Body Polishing</span>
+        <span class="polish-price">₹1599</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <i class="fas fa-home"></i> AR Home Salon — professional home services | Prices inclusive of taxes | Book your pamper session today <i class="fas fa-calendar-alt"></i>
+  </footer>
+</div>
+</body>
+</html>
