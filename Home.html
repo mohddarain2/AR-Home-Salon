@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AR Home Salon | Luxury at Home</title>
+  <title>AR Home Beauty Salon | Luxury at Home</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 (free icons) -->
@@ -17,7 +17,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #fff9f2 0%, #fff0e4 100%);
+      /* Updated gradient with deeper warm tones matching logo/AR brand (copper, terracotta) */
+      background: linear-gradient(135deg, #fff6ed 0%, #fee9db 100%);
       color: #2c241f;
       padding: 2rem 1.5rem;
     }
@@ -25,20 +26,106 @@
     .container {
       max-width: 1280px;
       margin: 0 auto;
+      position: relative;
     }
 
-    /* header with AR branding exactly like image style */
+    /* --- WhatsApp Floating Button (Top Right) --- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #25D366;
+      color: white;
+      border-radius: 60px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      transition: all 0.2s ease;
+      z-index: 1000;
+      text-decoration: none;
+      border: 2px solid white;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background-color: #20b859;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Top-right corner WhatsApp icon */
+    .top-whatsapp {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #25D366;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.2s;
+      z-index: 99;
+      border: 1px solid #fff3e6;
+    }
+
+    .top-whatsapp i {
+      font-size: 1.2rem;
+    }
+
+    .top-whatsapp:hover {
+      background: #1da15a;
+      transform: translateY(-2px);
+    }
+
+    /* header with AR branding + logo */
     .hero {
       text-align: center;
       margin-bottom: 3rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .custom-logo {
+      width: 85px;
+      height: 85px;
+      background: linear-gradient(145deg, #e68954, #b84c1e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.1);
+      border: 3px solid #fff4ea;
+    }
+
+    .custom-logo span {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 1px;
     }
 
     .hero h1 {
       font-size: 4rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(145deg, #b84c1e, #e17a44);
+      background: linear-gradient(145deg, #b84c1e, #e17a44, #c95f2c);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -57,7 +144,7 @@
       font-size: 1.2rem;
       font-weight: 500;
       color: #b15d36;
-      background: rgba(255, 245, 235, 0.8);
+      background: rgba(255, 245, 235, 0.9);
       display: inline-block;
       padding: 0.3rem 1.8rem;
       border-radius: 60px;
@@ -66,14 +153,64 @@
       letter-spacing: 0.3px;
     }
 
-    /* category card style - same elegant theme */
+    /* Contact Info Row - NEW */
+    .contact-info-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin: 1rem 0 0.5rem;
+      flex-wrap: wrap;
+      background: rgba(255, 245, 235, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid #ffdfce;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      color: #9b4a26;
+      background: white;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .contact-item i {
+      font-size: 1.1rem;
+      color: #c55d30;
+    }
+
+    .contact-item .number {
+      font-weight: 700;
+      color: #b84c1e;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-item:hover {
+      background: #fff5ed;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+
+    /* category card style */
     .service-category {
       background: #ffffff;
       border-radius: 2rem;
       margin-bottom: 2rem;
       box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0,0,0,0.02);
       transition: all 0.2s;
-      border: 1px solid #ffebdb;
+      border: 1px solid #ffdfce;
       overflow: hidden;
     }
 
@@ -107,7 +244,6 @@
       margin-left: auto;
     }
 
-    /* price grid layout */
     .price-grid {
       padding: 1.5rem 1.8rem;
       display: flex;
@@ -115,40 +251,6 @@
       gap: 1rem;
     }
 
-    .price-tag {
-      background: #fffbf7;
-      border-radius: 2rem;
-      padding: 0.6rem 1.4rem;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 1rem;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 0 0 1px #ffebdf;
-      transition: all 0.2s ease;
-    }
-
-    .price-tag:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px #ffd7bb;
-      background: white;
-    }
-
-    .service-name {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #3f2c21;
-    }
-
-    .price-number {
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: #cc693c;
-      background: #fff0e5;
-      padding: 0.2rem 0.75rem;
-      border-radius: 40px;
-      line-height: 1.2;
-    }
-
-    /* two column for waxing normal + rica side by side */
     .double-section {
       display: flex;
       flex-wrap: wrap;
@@ -200,7 +302,6 @@
       color: #c55d30;
     }
 
-    /* threading & detan row */
     .row-dual {
       display: flex;
       flex-wrap: wrap;
@@ -252,7 +353,6 @@
       color: #c45b2c;
     }
 
-    /* facial grid */
     .facial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -260,7 +360,6 @@
       width: 100%;
     }
 
-    /* special body polishing block */
     .polish-highlight {
       background: linear-gradient(115deg, #fff6ed, #ffffff);
       border-radius: 1.5rem;
@@ -285,14 +384,58 @@
       color: #bc4f1c;
     }
 
-    /* footer */
+    .social-section {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      background: #ffffffdb;
+      backdrop-filter: blur(4px);
+      width: 52px;
+      height: 52px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+      border: 1px solid #ffdac2;
+      color: #b3572c;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-6px);
+      background: white;
+      color: #cc6f40;
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.1);
+      border-color: #e2a07a;
+    }
+
     footer {
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 2rem;
       padding: 1.5rem;
       color: #ab7b5d;
       font-size: 0.85rem;
       border-top: 1px solid #ffe0cd;
+    }
+
+    .footer-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff6ef;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      margin-top: 0.8rem;
+      font-weight: 500;
+      color: #b14f26;
     }
 
     @media (max-width: 700px) {
@@ -302,26 +445,71 @@
       .category-head h2 {
         font-size: 1.5rem;
       }
-      .price-tag {
-        width: 100%;
-        justify-content: space-between;
-      }
       .polish-price {
         font-size: 1.4rem;
       }
       .hero h1 {
         font-size: 2.8rem;
       }
+      .top-whatsapp {
+        top: 0.7rem;
+        right: 0.7rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.7rem;
+      }
+      .custom-logo {
+        width: 65px;
+        height: 65px;
+      }
+      .custom-logo span {
+        font-size: 1.8rem;
+      }
+      .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        font-size: 1.7rem;
+        right: 1rem;
+        bottom: 1rem;
+      }
+      .contact-info-bar {
+        gap: 0.8rem;
+        padding: 0.4rem 1rem;
+      }
+      .contact-item {
+        padding: 0.2rem 0.8rem;
+        font-size: 0.75rem;
+      }
+      .contact-item i {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
+    <!-- Hero + Logo -->
   <div class="hero">
-    <h1>AR <span>Home Salon</span></h1>
+       <h1>AR <span>Home Beauty Salon</span></h1>
     <div class="sub"><i class="fas fa-spa"></i> Premium at-home luxury <i class="fas fa-hand-sparkles"></i></div>
+    
+    <!-- Contact Number Display - Added prominently -->
+    <div class="contact-info-bar">
+      <a href="tel:+919696939316" class="contact-item" style="text-decoration: none;">
+        <i class="fas fa-phone-alt"></i>
+        <span class="number">9696939316</span>
+      </a>
+      <div class="contact-item">
+        <i class="fas fa-clock"></i>
+        <span>9 AM - 6 PM</span>
+      </div>
+      <a href="https://wa.me/919696939316?text=Hi%20AR%20Home%20Beauty%20Salon" target="_blank" class="contact-item" style="text-decoration: none;">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+    </div>
   </div>
 
+  <!-- Waxing Section -->
   <div class="service-category">
     <div class="category-head">
       <h2>✨ Waxing</h2>
@@ -329,7 +517,6 @@
     </div>
     <div class="price-grid">
       <div class="double-section">
-        <!-- Normal Wax -->
         <div class="wax-box">
           <div class="wax-title"><i class="fas fa-feather-alt"></i> Waxing Normal</div>
           <div class="inline-list">
@@ -340,7 +527,6 @@
             <div class="inline-chip"><span class="chip-name">Full body</span><span class="chip-price">₹899</span></div>
           </div>
         </div>
-        <!-- Rica Wax -->
         <div class="wax-box">
           <div class="wax-title"><i class="fas fa-leaf"></i> Rica Wax</div>
           <div class="inline-list">
@@ -385,7 +571,7 @@
     </div>
   </div>
 
-  <!-- THREADING + DETAN (from page 2 of PDF, same theme) -->
+  <!-- THREADING + DETAN -->
   <div class="service-category">
     <div class="category-head">
       <h2>✧ Threading & Detan ✧</h2>
@@ -415,7 +601,7 @@
     </div>
   </div>
 
-  <!-- CLEANUP (Fruits, Pearl, Gold, Diamond, Charcoal) -->
+  <!-- CLEANUP -->
   <div class="service-category">
     <div class="category-head">
       <h2>🧼 CLEANUP</h2>
@@ -432,7 +618,7 @@
     </div>
   </div>
 
-  <!-- FACIAL (Fruits, Gold, Pearl, Diamond, Vitamin C, Wine, Lotus) -->
+  <!-- FACIAL -->
   <div class="service-category">
     <div class="category-head">
       <h2>💆 FACIAL</h2>
@@ -466,7 +652,7 @@
     </div>
   </div>
 
-  <!-- BODY POLISHING (Full Body Polishing) -->
+  <!-- BODY POLISHING -->
   <div class="service-category">
     <div class="category-head">
       <h2>🧴 BODY POLISHING</h2>
@@ -480,9 +666,31 @@
     </div>
   </div>
 
+  <!-- Social Media Row (Facebook & Instagram) -->
+  <div class="social-section">
+    <a href="https://www.facebook.com/people/AR-home-beauty-salon/61580702566014/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/arhomebeautysalon/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
   <footer>
-    <i class="fas fa-home"></i> AR Home Salon — professional home services | Prices inclusive of taxes | Book your pamper session today <i class="fas fa-calendar-alt"></i>
+    <i class="fas fa-home"></i> AR Home Beauty Salon — professional home services | Prices inclusive of taxes
+    <div class="footer-contact">
+      <i class="fas fa-phone-alt"></i> Call / WhatsApp: <strong>9696939316</strong>
+      <a href="tel:+919696939316" style="color:#b84c1e; margin-left:5px; text-decoration:none; font-weight:600;">📞 Tap to Call</a>
+    </div>
+    <div style="margin-top: 0.8rem; font-size:0.75rem;">Book your pamper session today <i class="fas fa-calendar-alt"></i></div>
   </footer>
 </div>
+
+<!-- WhatsApp floating bottom right -->
+<a href="https://wa.me/919696939316?text=Hi%20AR%20Home%20Beauty%20Salon%2C%20I%20need%20more%20details%20about%20services" 
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 </body>
 </html>
